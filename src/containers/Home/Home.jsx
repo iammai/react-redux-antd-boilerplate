@@ -9,10 +9,13 @@ import {
   decrementAsync,
 } from '../../actions/counter'
 
+import { Button } from 'antd';
+
 const Home = props => (
   <div>
     <h1>Home</h1>
     <p>Welcome home!</p>
+    <Button type="primary">Ant Design Button!</Button>
     <p>Count: {props.count}</p>
     <p>
       <button onClick={props.increment} disabled={props.isIncrementing}>Increment</button>
