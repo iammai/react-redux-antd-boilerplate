@@ -2,8 +2,9 @@ import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux';
-import configureStore, { history } from './store/configureStore'
-import App from './containers/App/App'
+import configureStore, { history } from './store/configureStore';
+
+import App from './containers/App/App';
 
 const target = document.querySelector('#root');
 
