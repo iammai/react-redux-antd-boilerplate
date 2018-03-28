@@ -14,16 +14,15 @@ const Home = props => (
   <div>
     <h1>Home</h1>
     <p>Welcome home!</p>
-    <Button type="primary">Ant Design Button!</Button>
     <p>Count: {props.count}</p>
     <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</button>
+      <Button type="primary" onClick={props.increment} disabled={props.isIncrementing}>Increment</Button>
+      <Button type="secondary" onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</Button>
     </p>
 
     <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
+      <Button type="primary" onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</Button>
+      <Button type="secondary" onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</Button>
     </p>
   </div>
 );
