@@ -3,7 +3,7 @@ import { HashRouter as Router, Route, Switch, Link, withRouter } from 'react-rou
 
 import { Alert, Breadcrumb, Layout, Menu } from 'antd';
 
-// import Home from '..//Home/Home';
+import Home from '..//Home/Home';
 import About from '../About/About';
 
 const { Header, Content, Footer } = Layout;
@@ -12,10 +12,10 @@ const Users = () => (
   <div>
     <ul className="users">
       <li>
-        <Link to="/users/1">User1</Link>：<Link to="/users/1/detail">Users</Link>
+        <Link to="/users/1">User1</Link>：<Link to="/users/1/detail">Detail</Link>
       </li>
       <li>
-        <Link to="/users/2">User2</Link>：<Link to="/users/2/detail">Users</Link>
+        <Link to="/users/2">User2</Link>：<Link to="/users/2/detail">Detail</Link>
       </li>
     </ul>
   </div>
@@ -27,9 +27,10 @@ const breadcrumbNameMap = {
   '/users/2': '2',
   '/users/1/detail': 'Detail',
   '/users/2/detail': 'Detail',
+  '/about-us': 'About Us',
 };
 
-const Home = withRouter((props) => {
+const BreadcrumbHeader = withRouter((props) => {
   const { location } = props;
   const pathSnippets = location.pathname.split('/').filter(i => i);
   const extraBreadcrumbItems = pathSnippets.map((_, index) => {
@@ -49,15 +50,10 @@ const Home = withRouter((props) => {
   )].concat(extraBreadcrumbItems);
   return (
     <div className="demo">
-      <div className="demo-nav">
-        <Link to="/">Home</Link>
-        <Link to="/users">Users</Link>
-      </div>
       <Switch>
         <Route path="/users" component={Users} />
         <Route render={() => <span>Home Page</span>} />
       </Switch>
-      <Alert style={{ margin: '16px 0' }} message="Click the navigation above to switch:" />
       <Breadcrumb>
         {breadcrumbItems}
       </Breadcrumb>
@@ -82,10 +78,11 @@ const App = () => (
     </Header>
     <Content style={{padding: '0 50px'}}>
       <div style={{background: '#fff', padding: 24, minHeight: 280}}>
+        <BreadcrumbHeader></BreadcrumbHeader>
         <main>
-          <Router>
-            <Home />
-          </Router>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/users" component={Users} />
+          <Route exact path="/about-us" component={About} />
         </main>
       </div>
     </Content>
