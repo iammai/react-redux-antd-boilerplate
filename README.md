@@ -1,4 +1,6 @@
-This project is based on the "Advanced Guides" section of the create react app with Ant Design, where we modify config-overrides to install antd on demand.
+This project is a simple boilerplate for React (v16), Redux, Router (v4), and Ant Design (UI components).
+
+The first section (React + Ant Design) is based on the "Advanced Guides" section of the create react app with Ant Design, where we modify config-overrides to install antd on demand.
 [Ant Design: Use with Create React App](https://ant.design/docs/react/use-with-create-react-app)
 
 Instead of importing all styles of of the antd library (`@import '~antd/dist/antd.css';`) (which may cause network performance issues), we can just load the styles of the components used in our project.
@@ -18,7 +20,7 @@ It based on React and is minimalistic and themeable.
 
 ## Folder Structure
 
-After creation, your project should look like this:
+With the first create-react app and integrating Ant Design, your project should look like this:
 
 ```
 ├── LICENSE
@@ -39,6 +41,47 @@ After creation, your project should look like this:
     ├── logo.svg
     └── registerServiceWorker.js
 ```
+
+After adding Redux and React Router to the project, your project should look like this
+
+
+````
+├── LICENSE
+├── README.md
+├── config-overrides.js
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+└── src
+    ├── actions
+    │   └── counter.js
+    ├── components
+    │   └── BreadcrumbHeader.jsx
+    ├── constants
+    │   └── breadcrumbNames.js
+    ├── containers
+    │   ├── About
+    │   │   └── About.jsx
+    │   ├── App
+    │   │   ├── App.jsx
+    │   │   └── App.test.js
+    │   ├── Home
+    │   │   └── Home.jsx
+    │   └── Users
+    │       └── Users.jsx
+    ├── index.js
+    ├── logo.svg
+    ├── reducers
+    │   ├── counter.js
+    │   └── index.js
+    ├── registerServiceWorker.js
+    └── store
+        └── configureStore.js
+
+````
 
 For the project to build, **these files must exist with exact filenames**:
 
