@@ -13,7 +13,7 @@ import { Button } from 'antd';
 const Home = props => (
   <div>
     <h1>Home</h1>
-    <p>Welcome home!</p>
+    <p>Welcome home! Below is a sample of increment and decrement actions in Redux.</p>
     <p>Count: {props.count}</p>
     <p>
       <Button type="primary" onClick={props.increment} disabled={props.isIncrementing}>Increment</Button>

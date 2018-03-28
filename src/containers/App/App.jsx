@@ -4,23 +4,11 @@ import { Route, Link } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 
 import Home from '..//Home/Home';
+import Users from '../Users/Users';
 import About from '../About/About';
 import BreadcrumbHeader from "../../components/BreadcrumbHeader";
 
 const { Header, Content, Footer } = Layout;
-
-const Users = () => (
-  <div>
-    <ul className="users">
-      <li>
-        <Link to="/users/1">User1</Link>：<Link to="/users/1/detail">Detail</Link>
-      </li>
-      <li>
-        <Link to="/users/2">User2</Link>：<Link to="/users/2/detail">Detail</Link>
-      </li>
-    </ul>
-  </div>
-);
 
 const App = () => (
   <Layout className="layout">
