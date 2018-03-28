@@ -5,6 +5,7 @@ import { Alert, Breadcrumb, Layout, Menu } from 'antd';
 
 import Home from '..//Home/Home';
 import About from '../About/About';
+import BreadcrumbHeader from "../../components/BreadcrumbHeader";
 
 const { Header, Content, Footer } = Layout;
 
@@ -20,46 +21,6 @@ const Users = () => (
     </ul>
   </div>
 );
-
-const breadcrumbNameMap = {
-  '/users': 'Users',
-  '/users/1': '1',
-  '/users/2': '2',
-  '/users/1/detail': 'Detail',
-  '/users/2/detail': 'Detail',
-  '/about-us': 'About Us',
-};
-
-const BreadcrumbHeader = withRouter((props) => {
-  const { location } = props;
-  const pathSnippets = location.pathname.split('/').filter(i => i);
-  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
-    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
-    return (
-      <Breadcrumb.Item key={url}>
-        <Link to={url}>
-          {breadcrumbNameMap[url]}
-        </Link>
-      </Breadcrumb.Item>
-    );
-  });
-  const breadcrumbItems = [(
-    <Breadcrumb.Item key="home">
-      <Link to="/">Home</Link>
-    </Breadcrumb.Item>
-  )].concat(extraBreadcrumbItems);
-  return (
-    <div className="demo">
-      <Switch>
-        <Route path="/users" component={Users} />
-        <Route render={() => <span>Home Page</span>} />
-      </Switch>
-      <Breadcrumb>
-        {breadcrumbItems}
-      </Breadcrumb>
-    </div>
-  );
-});
 
 const App = () => (
   <Layout className="layout">
