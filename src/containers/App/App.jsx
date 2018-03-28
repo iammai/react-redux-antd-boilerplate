@@ -1,7 +1,7 @@
 import React from 'react';
-import { HashRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
-import { Alert, Breadcrumb, Layout, Menu } from 'antd';
+import { Layout, Menu } from 'antd';
 
 import Home from '..//Home/Home';
 import About from '../About/About';

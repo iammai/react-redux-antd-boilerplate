@@ -11,9 +11,7 @@ const target = document.querySelector('#root');
 render(
   <Provider store={configureStore}>
     <ConnectedRouter history={history}>
-      <div>
         <App />
-      </div>
     </ConnectedRouter>
   </Provider>,
   target
