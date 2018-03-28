@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Switch, Link, withRouter } from 'react-router-dom';
 
 import { Alert, Breadcrumb, Layout, Menu } from 'antd';
 
@@ -21,39 +21,49 @@ const Users = () => (
   </div>
 );
 
-const Breadcrumbs = (props) => (
-  <div className="breadcrumbs">
-    <ul className='container'>
-      <Route path='/:path' component={BreadcrumbsItem} />
-    </ul>
-  </div>
-);
+const breadcrumbNameMap = {
+  '/users': 'Users',
+  '/users/1': '1',
+  '/users/2': '2',
+  '/users/1/detail': 'Detail',
+  '/users/2/detail': 'Detail',
+};
 
-const BreadcrumbsItem = ({ ...rest, match }) => (
-  <span>
-        <li className={match.isExact ? 'breadcrumb-active' : undefined}>
-            <Link to={match.url || ''}>
-                {match.url}
-            </Link>
-        </li>
-        <Route path={`${match.url}/:path`} component={BreadcrumbsItem} />
-    </span>
-)
-
-const Home = ({ routes, params, props }) => (
-  <div className="home-demo">
-    <Breadcrumbs></Breadcrumbs>
-
-
-    <div className="demo-nav">
+const Home = withRouter((props) => {
+  const { location } = props;
+  const pathSnippets = location.pathname.split('/').filter(i => i);
+  const extraBreadcrumbItems = pathSnippets.map((_, index) => {
+    const url = `/${pathSnippets.slice(0, index + 1).join('/')}`;
+    return (
+      <Breadcrumb.Item key={url}>
+        <Link to={url}>
+          {breadcrumbNameMap[url]}
+        </Link>
+      </Breadcrumb.Item>
+    );
+  });
+  const breadcrumbItems = [(
+    <Breadcrumb.Item key="home">
       <Link to="/">Home</Link>
-      <Link to="/users">Users</Link>
+    </Breadcrumb.Item>
+  )].concat(extraBreadcrumbItems);
+  return (
+    <div className="demo">
+      <div className="demo-nav">
+        <Link to="/">Home</Link>
+        <Link to="/users">Users</Link>
+      </div>
+      <Switch>
+        <Route path="/users" component={Users} />
+        <Route render={() => <span>Home Page</span>} />
+      </Switch>
+      <Alert style={{ margin: '16px 0' }} message="Click the navigation above to switch:" />
+      <Breadcrumb>
+        {breadcrumbItems}
+      </Breadcrumb>
     </div>
-    {'Home Page'}
-    <Alert style={{ margin: '16px 0' }} message="Click the navigation above to switch:" />
-    <Breadcrumb routes={routes} params={params} />
-  </div>
-);
+  );
+});
 
 const App = () => (
   <Layout className="layout">
@@ -72,11 +82,10 @@ const App = () => (
     </Header>
     <Content style={{padding: '0 50px'}}>
       <div style={{background: '#fff', padding: 24, minHeight: 280}}>
-        <Breadcrumbs></Breadcrumbs>
         <main>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/users" component={Users} />
-          <Route exact path="/about-us" component={About} />
+          <Router>
+            <Home />
+          </Router>
         </main>
       </div>
     </Content>
