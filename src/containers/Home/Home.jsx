@@ -1,5 +1,4 @@
 import React from 'react';
-import { push } from 'react-router-redux';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import {
@@ -14,19 +13,17 @@ import { Button } from 'antd';
 const Home = props => (
   <div>
     <h1>Home</h1>
-    <p>Welcome home!</p>
-    <Button type="primary">Ant Design Button!</Button>
+    <p>Welcome home! Below is a sample of increment and decrement actions in Redux.</p>
     <p>Count: {props.count}</p>
     <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</button>
+      <Button type="primary" onClick={props.increment} disabled={props.isIncrementing}>Increment</Button>
+      <Button type="secondary" onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</Button>
     </p>
 
     <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
+      <Button type="primary" onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</Button>
+      <Button type="secondary" onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</Button>
     </p>
-    <button onClick={() => props.changePage()}>Go to about page via redux</button>
   </div>
 );
 
@@ -41,7 +38,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementAsync,
   decrement,
   decrementAsync,
-  changePage: () => push('/about-us'),
 }, dispatch);
 
 export default connect(
