@@ -1,6 +1,14 @@
 This project is a simple boilerplate for React (v16), Redux, Router (v4), and Ant Design (UI components).
 
-The first section (React + Ant Design) is based on the "Advanced Guides" section of the create react app with Ant Design, where we modify config-overrides to install antd on demand.
+Components of Boilerplate
+1. Create React App and Ant Design without the need for npm eject
+2. Add Redux for state management (see sample counter: action, reducers, store)
+3. A basic Header, Content, Footer layout from Ant Design
+4. React Router v4 + antd: Add breadcrumbs and connect with React Router v4 
+
+## Ant Design
+
+The first step (React + Ant Design) is based on the "Advanced Guides" section of the create react app with Ant Design, where we modify config-overrides to install antd on demand.
 [Ant Design: Use with Create React App](https://ant.design/docs/react/use-with-create-react-app)
 
 Instead of importing all styles of of the antd library (`@import '~antd/dist/antd.css';`) (which may cause network performance issues), we can just load the styles of the components used in our project.
@@ -16,7 +24,6 @@ Ant Design is a an out-of-box UI solution for enterprise applications used by
 * Eleme
 
 It based on React and is minimalistic and themeable.
-
 
 ## Folder Structure
 
