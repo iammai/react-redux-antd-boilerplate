@@ -1,6 +1,6 @@
 This project is a simple boilerplate for React (v16), Redux, Router (v4), and Ant Design (UI components).
 
-Components of Boilerplate
+Elements of Boilerplate
 1. Create React App and Ant Design without the need for npm eject
 2. Add Redux for state management (see sample counter: action, reducers, store)
 3. A basic Header, Content, Footer layout from Ant Design
@@ -24,6 +24,11 @@ Ant Design is a an out-of-box UI solution for enterprise applications used by
 * Eleme
 
 It based on React and is minimalistic and themeable.
+
+
+![](http://i.imgur.com/vxu1U1B.png)
+
+[More layouts and components](https://ant.design/components/layout/)
 
 ## Folder Structure
 
