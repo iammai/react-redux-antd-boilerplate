@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link, history } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 import { Alert, Breadcrumb, Layout, Menu } from 'antd';
 
@@ -9,18 +9,42 @@ import About from '../About/About';
 const { Header, Content, Footer } = Layout;
 
 const Users = () => (
-  <ul className="users">
-    <li>
-      <Link to="/users/1">User1</Link>：<Link to="/users/1/detail">Users</Link>
-    </li>
-    <li>
-      <Link to="/users/2">User2</Link>：<Link to="/users/2/detail">Users</Link>
-    </li>
-  </ul>
+  <div>
+    <ul className="users">
+      <li>
+        <Link to="/users/1">User1</Link>：<Link to="/users/1/detail">Users</Link>
+      </li>
+      <li>
+        <Link to="/users/2">User2</Link>：<Link to="/users/2/detail">Users</Link>
+      </li>
+    </ul>
+  </div>
 );
 
-const Home = ({ routes, params, children }) => (
+const Breadcrumbs = (props) => (
+  <div className="breadcrumbs">
+    <ul className='container'>
+      <Route path='/:path' component={BreadcrumbsItem} />
+    </ul>
+  </div>
+);
+
+const BreadcrumbsItem = ({ ...rest, match }) => (
+  <span>
+        <li className={match.isExact ? 'breadcrumb-active' : undefined}>
+            <Link to={match.url || ''}>
+                {match.url}
+            </Link>
+        </li>
+        <Route path={`${match.url}/:path`} component={BreadcrumbsItem} />
+    </span>
+)
+
+const Home = ({ routes, params, props }) => (
   <div className="home-demo">
+    <Breadcrumbs></Breadcrumbs>
+
+
     <div className="demo-nav">
       <Link to="/">Home</Link>
       <Link to="/users">Users</Link>
@@ -48,6 +72,7 @@ const App = () => (
     </Header>
     <Content style={{padding: '0 50px'}}>
       <div style={{background: '#fff', padding: 24, minHeight: 280}}>
+        <Breadcrumbs></Breadcrumbs>
         <main>
           <Route exact path="/" component={Home} />
           <Route exact path="/users" component={Users} />
